@@ -8,8 +8,8 @@ pipeline {
 
     }
      tools {
-            jdk 'JDK 11' // Use JDK 11 installed on the agent
-            gradle 'Gradle 6.5' // Use Gradle 6.5 installed on the agent
+            jdk 'JDK 17' // Use JDK 11 installed on the agent
+            gradle 'Gradle 8.8' // Use Gradle 6.5 installed on the agent
         }
 
     stages {
