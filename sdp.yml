@@ -1,0 +1,3 @@
+dockerCredentialsId: 'your-docker-credentials-id'
+dockerImage: 'your-docker-image-name'
+dockerRegistry: 'your-docker-registry-url'
