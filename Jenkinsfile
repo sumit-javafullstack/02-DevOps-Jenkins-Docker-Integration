@@ -14,7 +14,7 @@ pipeline {
             gradle 'GRADLE_HOME' // Use Gradle 6.5 installed on the agent
     }
     environment {
-        SDP_FILE = 'sdp.yaml'
+        SDP_FILE = 'sdp.yml'
         DOCKER_CREDENTIALS_ID = ''
         DOCKER_IMAGE = ''
         DOCKER_REGISTRY = ''
