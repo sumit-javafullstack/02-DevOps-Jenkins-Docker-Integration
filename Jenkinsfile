@@ -31,8 +31,8 @@ pipeline {
                          env.SERVICE_NAME = sdpConfig.serviceName
                          env.SERVICE_VERSION = sdpConfig.appVersion
                          env.DOCKER_REGISTRY = sdpConfig.dockerRegistry
-                         if(sdpConfig == null){
-                         echo "Testttt"
+                         if(sdpConfig != null){
+                         echo "Testttt ${sdpConfig}"
                          }
                          echo "Value 1: ${env.SERVICE_NAME}"
                          echo "Value 2: ${env.SERVICE_VERSION}"
