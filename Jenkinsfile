@@ -35,9 +35,8 @@ pipeline {
                          if(sdpConfig != null){
                          echo "Testttt ${sdpConfig}"
                          }
-                         echo "Value 1: ${SERVICE_NAME}"
-                         echo "Value 2: ${SERVICE_VERSION}"
-                         env.IMAGE_NAME = "${env.SERVICE_NAME}"
+
+                         IMAGE_NAME = env.SERVICE_NAME
                          echo "Initializing pipeline... with image name ${env.IMAGE_NAME}"
                     }
                 }
