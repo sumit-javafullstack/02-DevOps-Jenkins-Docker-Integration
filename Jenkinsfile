@@ -46,7 +46,8 @@ pipeline {
                             bat 'gradle clean build -Pversion=${env.APP_VERSION}'
 
                             // Copy the build artifact with the version in its name
-                            bat "copy build\\libs\\your-app-${env.APP_VERSION}.jar build\\libs\\your-app.jar"
+                            set VERSION=${env.APP_VERSION}
+                            rename "build\\libs\\02-jenkins-docker-VERSION_NAME.jar" "02-jenkins-docker-%VERSION%.jar"
                         }
                     }
         }

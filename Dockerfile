@@ -7,10 +7,10 @@ ARG VERSION
 WORKDIR /app
 
 # Copy the packaged Spring Boot jar file into the container
-COPY build/libs/02-jenkins-docker-${VERSION}.jar my-first-app.jar
+COPY build/libs/02-jenkins-docker-${VERSION}.jar app.jar
 
 # Expose the port the application runs on
 EXPOSE 8080
 
 # Set the command to run the Spring Boot application
-ENTRYPOINT ["java", "-jar", "my-first-app.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
