@@ -2,7 +2,7 @@ pipeline {
     agent any
     options {
         timeout(time: 1, unit: 'HOURS') // Timeout the entire pipeline after 1 hour
-        retry(2) // Retry failed stages up to 3 times
+        retry(1) // Retry failed stages up to 3 times
         buildDiscarder(logRotator(numToKeepStr: '10')) // Keep the last 10 builds
         skipDefaultCheckout() // Skip the default checkout
         timestamps()//add timestamp in the log
@@ -16,8 +16,10 @@ pipeline {
     environment {
         SDP_FILE = 'sdp.yml'
         DOCKER_CREDENTIALS_ID = ''
-        DOCKER_IMAGE = ''
+        SERVICE_NAME = ''
+        SERVICE_VERSION = ''
         DOCKER_REGISTRY = ''
+        IMAGE_NAME=''
     }
     stages {
         stage('Initialize') {
@@ -26,9 +28,11 @@ pipeline {
                          checkout scm
                          def sdpConfig = readYaml(file: "${SDP_FILE}")
                          env.DOCKER_CREDENTIALS_ID = sdpConfig.dockerCredentialsId
-                         env.DOCKER_IMAGE = sdpConfig.dockerImage
+                         env.SERVICE_NAME = sdpConfig.serviceName
+                         env.SERVICE_VERSION = sdpConfig.appVersion
                          env.DOCKER_REGISTRY = sdpConfig.dockerRegistry
-                         echo 'Initializing pipeline...'
+                         env.IMAGE_NAME=SERVICE_NAME+':'+SERVICE_VERSION
+                         echo 'Initializing pipeline... with image name $IMAGE_NAME'
                     }
                 }
         }
