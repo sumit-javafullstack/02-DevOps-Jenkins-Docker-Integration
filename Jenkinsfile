@@ -42,10 +42,9 @@ pipeline {
         stage('Build') {
                     steps {
                         script {
-                            // Build the project using Gradle
-                            def version="${env.APP_VERSION}"
-                            bat "gradle clean build -Pversion=${version}"
-
+                            powershell """
+                             bat gradle clean build -Pversion=${env.APP_VERSION}
+                            """
                             }
                     }
         }
