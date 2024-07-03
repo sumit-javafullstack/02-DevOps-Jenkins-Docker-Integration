@@ -5,6 +5,8 @@ pipeline {
         retry(2) // Retry failed stages up to 3 times
         buildDiscarder(logRotator(numToKeepStr: '10')) // Keep the last 10 builds
         skipDefaultCheckout() // Skip the default checkout
+        timestamps()//add timestamp in the log
+        disableConcurrentBuilds()// at a time, only one build should run
 
     }
     tools {
@@ -21,11 +23,11 @@ pipeline {
         stage('Initialize') {
                 steps {
                     script {
+                         checkout scm
                          def sdpConfig = readYaml(file: "${SDP_FILE}")
                          env.DOCKER_CREDENTIALS_ID = sdpConfig.dockerCredentialsId
                          env.DOCKER_IMAGE = sdpConfig.dockerImage
                          env.DOCKER_REGISTRY = sdpConfig.dockerRegistry
-                         checkout scm
                          echo 'Initializing pipeline...'
                     }
                 }
