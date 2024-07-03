@@ -1,3 +1,5 @@
+def IMAGE_NAME
+
 pipeline {
     agent any
     options {
@@ -19,7 +21,6 @@ pipeline {
         SERVICE_NAME = ''
         SERVICE_VERSION = ''
         DOCKER_REGISTRY = ''
-        IMAGE_NAME = ''
     }
     stages {
         stage('Initialize') {
@@ -36,7 +37,7 @@ pipeline {
                          }
                          echo "Value 1: ${env.SERVICE_NAME}"
                          echo "Value 2: ${env.SERVICE_VERSION}"
-                         env.IMAGE_NAME = "${env.SERVICE_NAME} ${env.SERVICE_VERSION}"
+                         env.IMAGE_NAME = env.SERVICE_NAME + env.SERVICE_VERSION
                          echo "Initializing pipeline... with image name ${env.IMAGE_NAME}"
                     }
                 }
