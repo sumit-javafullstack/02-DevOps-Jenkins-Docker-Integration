@@ -32,10 +32,9 @@ pipeline {
                          echo "Docker Credentials ID: ${env.DOCKER_CREDENTIALS_ID}"
                          echo "Docker Image: ${env.DOCKER_IMAGE}"
                          echo "Docker Registry: ${env.DOCKER_REGISTRY}"
-                         }
 
-                         IMAGE_NAME = env.SERVICE_NAME
-                         echo "Initializing pipeline... with image name ${IMAGE_NAME}"
+
+
                     }
                 }
         }
