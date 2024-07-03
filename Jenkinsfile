@@ -7,12 +7,29 @@ pipeline {
         skipDefaultCheckout() // Skip the default checkout
 
     }
-     tools {
+    tools {
             jdk 'JAVA_HOME' // Use JDK 11 installed on the agent
             gradle 'GRADLE_HOME' // Use Gradle 6.5 installed on the agent
-        }
-
+    }
+    environment {
+        SDP_FILE = 'sdp.yaml'
+        DOCKER_CREDENTIALS_ID = ''
+        DOCKER_IMAGE = ''
+        DOCKER_REGISTRY = ''
+    }
     stages {
+        stage('Initialize') {
+                steps {
+                    script {
+                         def sdpConfig = readYaml(file: "${SDP_FILE}")
+                         env.DOCKER_CREDENTIALS_ID = sdpConfig.dockerCredentialsId
+                         env.DOCKER_IMAGE = sdpConfig.dockerImage
+                         env.DOCKER_REGISTRY = sdpConfig.dockerRegistry
+                         checkout scm
+                         echo 'Initializing pipeline...'
+                    }
+                }
+        }
         stage('Build') {
                     steps {
                         script {
