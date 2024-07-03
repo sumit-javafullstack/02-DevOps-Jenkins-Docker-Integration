@@ -37,7 +37,7 @@ pipeline {
                          }
 
                          IMAGE_NAME = env.SERVICE_NAME
-                         echo "Initializing pipeline... with image name ${env.IMAGE_NAME}"
+                         echo "Initializing pipeline... with image name ${IMAGE_NAME}"
                     }
                 }
         }
