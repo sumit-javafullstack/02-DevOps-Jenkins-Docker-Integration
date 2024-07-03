@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'com.devops'
-version = 'VERSION_NUMBER'
+version = project.hasProperty('version') ? version : '1.0.0-snapshot'
 
 java {
 	toolchain {

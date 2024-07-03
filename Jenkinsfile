@@ -43,7 +43,7 @@ pipeline {
                     steps {
                         script {
                             // Build the project using Gradle
-                            bat 'gradle clean build -Pversion=${env.APP_VERSION} publish'
+                            bat 'gradle clean build -Pversion=${env.APP_VERSION}'
 
                             }
                     }
