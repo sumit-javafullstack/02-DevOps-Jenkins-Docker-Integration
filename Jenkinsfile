@@ -37,7 +37,7 @@ pipeline {
                          }
                          echo "Value 1: ${env.SERVICE_NAME}"
                          echo "Value 2: ${env.SERVICE_VERSION}"
-                         env.IMAGE_NAME = env.SERVICE_NAME + env.SERVICE_VERSION
+                         env.IMAGE_NAME = ${env.SERVICE_NAME}
                          echo "Initializing pipeline... with image name ${env.IMAGE_NAME}"
                     }
                 }
