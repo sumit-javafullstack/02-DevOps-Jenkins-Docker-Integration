@@ -47,7 +47,7 @@ pipeline {
 
                             // Copy the build artifact with the version in its name
 
-                            rename "build\\libs\\02-jenkins-docker-VERSION_NUMBER.jar" "02-jenkins-docker-%${env.APP_VERSION}%.jar"
+                            bat "rename build\\libs\\02-jenkins-docker-VERSION_NUMBER.jar" "02-jenkins-docker-%${env.APP_VERSION}%.jar"
                         }
                     }
         }
