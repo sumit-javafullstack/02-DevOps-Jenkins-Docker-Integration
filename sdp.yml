@@ -1,3 +1,4 @@
-dockerCredentialsId=your-docker-credentials-id
-dockerImage=your-docker-image-name
-dockerRegistry=your-docker-registry-url
+dockerCredentialsId: 'your-docker-credentials-id'
+serviceName: 'devops-jenkins-docker-integration'
+appVersion: '1.0.0'
+dockerRegistry: 'your-docker-registry-url'

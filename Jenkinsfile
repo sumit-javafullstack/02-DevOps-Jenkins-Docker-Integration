@@ -16,7 +16,7 @@ pipeline {
             gradle 'GRADLE_HOME' // Use Gradle 6.5 installed on the agent
     }
     environment {
-    CONFIG_FILE = 'sdp.yml'
+        CONFIG_FILE = 'sdp.yml'
     }
     stages {
         stage('Initialize') {
@@ -26,14 +26,13 @@ pipeline {
                          // Read the properties file
                          def config = readProperties file: "${CONFIG_FILE}"
                          env.DOCKER_CREDENTIALS_ID = config.dockerCredentialsId
-                         env.DOCKER_IMAGE = config.dockerImage
+                         env.SERVICE_NAME = config.serviceName
+                         env.APP_VERSION = config.appVersion
                          env.DOCKER_REGISTRY = config.dockerRegistry
 
                          echo "Docker Credentials ID: ${env.DOCKER_CREDENTIALS_ID}"
-                         echo "Docker Image: ${env.DOCKER_IMAGE}"
+                         echo "Docker Image: ${env.SERVICE_NAME}"
                          echo "Docker Registry: ${env.DOCKER_REGISTRY}"
-
-
 
                     }
                 }
