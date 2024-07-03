@@ -29,10 +29,10 @@ pipeline {
                          env.SERVICE_NAME = config.serviceName
                          env.APP_VERSION = config.appVersion
                          env.DOCKER_REGISTRY = config.dockerRegistry
-
+                         env.IMAGE_NAME = "${env.SERVICE_NAME}:${env.APP_VERSION}"
                          echo "Docker Credentials ID: ${env.DOCKER_CREDENTIALS_ID}"
                          echo "Docker Image: ${env.SERVICE_NAME}"
-                         echo "Docker Registry: ${env.DOCKER_REGISTRY}"
+                         echo "Docker Registry: ${env.IMAGE_NAME}"
 
                     }
                 }
