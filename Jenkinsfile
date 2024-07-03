@@ -50,7 +50,7 @@ pipeline {
                     steps {
                         script {
                             // Build the Docker image
-                            docker.build("${env.IMAGE_NAME}:${env.BUILD_ID}")
+                            docker.build("${env.IMAGE_NAME}-${env.BUILD_ID}")
                         }
                     }
                 }
