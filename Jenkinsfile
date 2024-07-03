@@ -28,7 +28,7 @@ pipeline {
                          def config = readProperties file: "${CONFIG_FILE}"
                          env.DOCKER_CREDENTIALS_ID = config.dockerCredentialsId
                          env.SERVICE_NAME = config.serviceName
-                         env.APP_VERSION = config.appVersion
+                         env.APP_VERSION = config.appVersion.toLowerCase()
                          env.DOCKER_REGISTRY = config.dockerRegistry
                          //logging values
                          env.IMAGE_NAME = "${env.SERVICE_NAME}-${env.APP_VERSION}"
