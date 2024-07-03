@@ -5,7 +5,7 @@ FROM openjdk:17-jdk-alpine
 WORKDIR /app
 
 # Copy the packaged Spring Boot jar file into the container
-COPY build/libs/02-jenkins-docker-${VERSION_NUMBER}.jar my-first-app.jar
+COPY build/libs/02-jenkins-docker-${APP_VERSION}.jar my-first-app.jar
 
 # Expose the port the application runs on
 EXPOSE 8080
