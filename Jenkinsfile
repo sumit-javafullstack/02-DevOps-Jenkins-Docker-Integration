@@ -51,7 +51,9 @@ pipeline {
                     steps {
                         script {
                             // Build the Docker image
-                            docker.build("${env.IMAGE_NAME}-${env.BUILD_ID}")
+                          powershell """
+                                     docker build --build-arg VERSION=${env.APP_VERSION} -t ${env.IMAGE_NAME}-${env.BUILD_ID} .
+                                     """
                         }
                     }
                 }
