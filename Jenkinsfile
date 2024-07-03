@@ -46,7 +46,7 @@ pipeline {
                             bat 'gradle clean build -Pversion=${env.APP_VERSION}'
 
                             // Copy the build artifact with the version in its name
-                            bat "copy build\\libs\\your-app-${env.VERSION}.jar build\\libs\\your-app.jar"
+                            bat "copy build\\libs\\your-app-${env.APP_VERSION}.jar build\\libs\\your-app.jar"
                         }
                     }
         }
