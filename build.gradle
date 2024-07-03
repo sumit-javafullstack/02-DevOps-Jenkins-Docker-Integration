@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'com.devops'
-
+version = 'VERSION_NUMBER'
 
 java {
 	toolchain {
