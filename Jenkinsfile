@@ -16,24 +16,22 @@ pipeline {
             gradle 'GRADLE_HOME' // Use Gradle 6.5 installed on the agent
     }
     environment {
-        SDP_FILE = 'sdp.yml'
-        DOCKER_CREDENTIALS_ID = ''
-        SERVICE_NAME = ''
-        SERVICE_VERSION = ''
-        DOCKER_REGISTRY = ''
+    CONFIG_FILE = 'sdp.yml'
     }
     stages {
         stage('Initialize') {
                 steps {
                     script {
                          checkout scm
-                         def sdpConfig = readYaml(file: "${SDP_FILE}")
-                         env.DOCKER_CREDENTIALS_ID = sdpConfig.dockerCredentialsId
-                         env.SERVICE_NAME = sdpConfig.serviceName
-                         env.SERVICE_VERSION = sdpConfig.appVersion
-                         env.DOCKER_REGISTRY = sdpConfig.dockerRegistry
-                         if(sdpConfig != null){
-                         echo "Testttt ${sdpConfig}"
+                         // Read the properties file
+                         def config = readProperties file: "${CONFIG_FILE}"
+                         env.DOCKER_CREDENTIALS_ID = config.dockerCredentialsId
+                         env.DOCKER_IMAGE = config.dockerImage
+                         env.DOCKER_REGISTRY = config.dockerRegistry
+
+                         echo "Docker Credentials ID: ${env.DOCKER_CREDENTIALS_ID}"
+                         echo "Docker Image: ${env.DOCKER_IMAGE}"
+                         echo "Docker Registry: ${env.DOCKER_REGISTRY}"
                          }
 
                          IMAGE_NAME = env.SERVICE_NAME
