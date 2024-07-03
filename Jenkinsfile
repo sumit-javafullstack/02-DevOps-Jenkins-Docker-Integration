@@ -17,7 +17,7 @@ pipeline {
     }
     environment {
         CONFIG_FILE = 'sdp.yml'
-        env.APP_VERSION = ''
+        APP_VERSION = ''
     }
     stages {
         stage('Initialize') {
