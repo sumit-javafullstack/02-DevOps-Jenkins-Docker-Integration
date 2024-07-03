@@ -17,6 +17,7 @@ pipeline {
     }
     environment {
         CONFIG_FILE = 'sdp.yml'
+        env.APP_VERSION = ''
     }
     stages {
         stage('Initialize') {
@@ -30,7 +31,7 @@ pipeline {
                          env.APP_VERSION = config.appVersion
                          env.DOCKER_REGISTRY = config.dockerRegistry
                          //logging values
-                         env.IMAGE_NAME = "${env.SERVICE_NAME}:${env.APP_VERSION}"
+                         env.IMAGE_NAME = "${env.SERVICE_NAME}-${env.APP_VERSION}"
                          echo "Docker Credentials ID: ${env.DOCKER_CREDENTIALS_ID}"
                          echo "Docker Image: ${env.SERVICE_NAME}"
                          echo "Docker Registry: ${env.IMAGE_NAME}"
