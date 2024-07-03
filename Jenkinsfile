@@ -31,7 +31,7 @@ pipeline {
                          env.SERVICE_NAME = sdpConfig.serviceName
                          env.SERVICE_VERSION = sdpConfig.appVersion
                          env.DOCKER_REGISTRY = sdpConfig.dockerRegistry
-                         env.IMAGE_NAME=SERVICE_NAME+':'+SERVICE_VERSION
+                         env.IMAGE_NAME = env.SERVICE_NAME + ':' + env.SERVICE_VERSION
                          echo 'Initializing pipeline... with image name $IMAGE_NAME'
                     }
                 }
