@@ -58,7 +58,7 @@ pipeline {
                                      """
 
                            // Push the Docker image to Docker Hub
-                           docker.withDockerRegistry(credentialsId: 'docker') {
+                           docker.withDockerRegistry([credentialsId: 'docker', url: 'https://hub.docker.com/']) {
 
                            docker.image("${env.IMAGE_NAME}-${env.BUILD_ID}").push('latest')
                            docker.image("${env.IMAGE_NAME}-${env.BUILD_ID}").push("${env.BUILD_ID}")
