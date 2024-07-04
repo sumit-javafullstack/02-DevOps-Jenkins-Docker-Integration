@@ -12,7 +12,7 @@ pipeline {
 
     }
     tools {
-            jdk 'JAVA_HOME' // Use JDK 11 installed on the agent
+            jdk 'JDK 1.17' // Use JDK 11 installed on the agent
             gradle 'GRADLE_HOME' // Use Gradle 6.5 installed on the agent
     }
     environment {
