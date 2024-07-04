@@ -58,10 +58,11 @@ pipeline {
                                      """
 
                            // Push the Docker image to Docker Hub
-                           docker login -u sumit06420 -p Sumit@06420
+                           docker.withDockerRegistry(credentialsId: 'docker') {
+
                            docker.image("${env.IMAGE_NAME}-${env.BUILD_ID}").push('latest')
                            docker.image("${env.IMAGE_NAME}-${env.BUILD_ID}").push("${env.BUILD_ID}")
-
+                           }
 
                         }
                     }
