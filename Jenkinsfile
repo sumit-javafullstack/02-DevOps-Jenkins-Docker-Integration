@@ -58,11 +58,11 @@ pipeline {
                                      """
 
                            // Push the Docker image to Docker Hub
-                           docker.withRegistry("${env.DOCKER_REGISTRY}", "${env.DOCKER_CREDENTIALS_ID}") {
+//                            docker.withRegistry("${env.DOCKER_REGISTRY}", "${env.DOCKER_CREDENTIALS_ID}") {
                            docker.image("${env.IMAGE_NAME}-${env.BUILD_ID}").push('latest')
                            docker.image("${env.IMAGE_NAME}-${env.BUILD_ID}").push("${env.BUILD_ID}")
 
-                            }
+//                             }
                         }
                     }
          }
