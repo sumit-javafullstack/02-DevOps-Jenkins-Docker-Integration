@@ -2,6 +2,8 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.3.1'
 	id 'io.spring.dependency-management' version '1.1.5'
+	id 'jacoco'
+	id 'org.sonarqube' version '3.3'
 }
 
 group = 'com.devops'
@@ -23,6 +25,24 @@ dependencies {
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
-tasks.named('test') {
+test {
 	useJUnitPlatform()
+	finalizedBy jacocoTestReport
 }
+
+jacocoTestReport {
+	reports {
+		xml.required = true
+		csv.required = false
+		html.outputLocation = file("${buildDir}/jacocoHtml")
+	}
+}
+
+sonarqube {
+	properties {
+		property "sonar.projectKey", "springboot-rest-api"
+		property "sonar.host.url", "http://localhost:9000"
+		property "sonar.login", "squ_05f57d1e2165dc391ff2fe489cf6cd5b44c4649b"
+	}
+}
+

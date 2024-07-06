@@ -49,6 +49,18 @@ pipeline {
                             }
                     }
         }
+
+        stage('SonarQube Analysis') {
+                    steps {
+                        script {
+                            def scannerHome = tool 'SonarQubeScanner'
+                            withSonarQubeEnv('sonar-server') {
+                                bat "${scannerHome}\\bin\\sonar-scanner.bat"
+                            }
+                        }
+                    }
+                }
+
          stage('Build and push image') {
                     steps {
                         script {
