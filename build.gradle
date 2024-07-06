@@ -40,6 +40,11 @@ jacocoTestReport {
 	}
 }
 
+jacoco {
+	toolVersion = "0.8.8"
+
+}
+
 sonarqube {
 	properties {
 		property "sonar.projectKey", "springboot-rest-api"
