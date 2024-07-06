@@ -55,7 +55,7 @@ pipeline {
                         script {
                             def scannerHome = tool 'SonarQubeScanner'
                             withSonarQubeEnv('sonar-server') {
-                                bat "${scannerHome}\\bin\\sonar-scanner.bat"
+                                bat "gradle sonarqube -Dsonar.projectKey=springboot-rest-api -Dsonar.host.url=http://localhost:9000 -Dsonar.login=squ_05f57d1e2165dc391ff2fe489cf6cd5b44c4649b"
                             }
                         }
                     }
